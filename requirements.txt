@@ -12,5 +12,5 @@ pandas
 flask
 nltk
 re
-
+pickle
 
