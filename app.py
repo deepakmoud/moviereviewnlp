@@ -2,7 +2,7 @@ import numpy as np
 from flask import Flask, request, jsonify, render_template
 import pickle
 import pandas as pd
-from flask_ngrok import run_with_ngrok
+
 import re
 
 
@@ -16,12 +16,12 @@ nltk.download('omw-1.4')
 # Create a lemmatizer object
 lemmatizer = nltk.WordNetLemmatizer()
 app = Flask(__name__)
-model = pickle.load(open('/content/drive/My Drive/Decision_tree_education_model.pkl','rb'))
-run_with_ngrok(app)
+model = pickle.load(open('Decision_tree_education_model.pkl','rb'))
+
 from sklearn.feature_extraction.text import CountVectorizer
 cv = CountVectorizer(max_features = 1500)
 print(cv)
-corpus=pd.read_csv('/content/drive/My Drive/corpus_dataset.csv')
+corpus=pd.read_csv('corpus_dataset.csv')
 corpus1=corpus['corpus'].tolist()
 X = cv.fit_transform(corpus1).toarray()
 
@@ -59,5 +59,5 @@ def review():
 
     return render_template('index.html', prediction_text='Movie Review Anlaysis: {}'.format(result))
 
-#if __name__=="__main__":
-app.run()
+if __name__=="__main__":
+  app.run()
