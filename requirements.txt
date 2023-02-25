@@ -9,7 +9,8 @@ scipy
 scikit-learn
 matplotlib
 pandas
-streamlit
+flask
 nltk
+re
 
 
